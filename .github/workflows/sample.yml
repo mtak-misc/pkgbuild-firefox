@@ -24,7 +24,7 @@ jobs:
         run: |
            su builder -c "abuild-keygen -a -i -n"
            cd /home/builder/firefox; su builder -c "abuild checksum"
-           cd /home/builder/firefox; su builder -c "abuild"           
+           cd /home/builder/firefox; su builder -c abuild        
            cp $(find /home/builder -name firefox*.apk) /tmp
       - uses: actions/upload-artifact@v3
         with:
