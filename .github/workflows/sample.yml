@@ -39,6 +39,7 @@ jobs:
            cd /home/builder/firefox
            sed -i 's/107.0.1/108.0.1/g' APKBUILD
            sed -i 's/e57e4bfcecbcc6dbe73f23577a14a2998c8c3f3d602f85ea06f99e0974e78481b9f7bdb019cb4e9733e59f56be1407edd64a2adb7b284bb4a87b46b1e2295dea/e6219ed6324422ec293ed96868738e056582bb9f7fb82e59362541f3465c6ebca806d26ecd801156b074c3675bd5a22507b1f1fa53eebf82b7dd35f2b1ff0625/g' APKBUILD
+           sed -i 's/	python3.11.patch/#	python3.11.patch/g' APKBUILD
       - name: Install packages
         run: |
            cd /home/builder/firefox
