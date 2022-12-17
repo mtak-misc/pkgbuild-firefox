@@ -8,10 +8,6 @@ jobs:
     runs-on: ubuntu-latest
     container: alpine:3.17    
     steps:
-      - name: Install sdk
-        run: |
-          apk upgrade
-          apk add alpine-sdk sudo  
       - name: Checkount aports repository
         uses: actions/checkout@v3  
         with:
@@ -21,38 +17,4 @@ jobs:
       - name: Prepare abuild
 #          echo "permit nopass :wheel" >> /etc/doas.d/doas.conf      
         run: |
-          adduser builder -D -G wheel && echo "builder ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
-          addgroup builder abuild
-          chown builder -R ..
-          chown builder -R /tmp
-          mkdir -p /var/cache/distfiles
-          chmod a+w /var/cache/distfiles
-          chgrp abuild /var/cache/distfiles
-          chmod g+w /var/cache/distfiles
-          su builder -c "abuild-keygen -a -i -n"
-      - name: Check out repository
-        uses: actions/checkout@v3
-        with:
-          repository: alpinelinux/aports
-      - name: Move repo directory
-        run: |
-           mv community/firefox /home/builder
-           chown builder -R /home/builder
-           cd /home/builder/firefox
-           sed -i 's/107.0.1/108.0.1/g' APKBUILD
-           sed -i 's/e57e4bfcecbcc6dbe73f23577a14a2998c8c3f3d602f85ea06f99e0974e78481b9f7bdb019cb4e9733e59f56be1407edd64a2adb7b284bb4a87b46b1e2295dea/e6219ed6324422ec293ed96868738e056582bb9f7fb82e59362541f3465c6ebca806d26ecd801156b074c3675bd5a22507b1f1fa53eebf82b7dd35f2b1ff0625/g' APKBUILD
-           sed -i '/python3.11.patch/d' APKBUILD
-      - name: Install packages
-        run: |
-           cd /home/builder/firefox
-           su builder -c "abuild checksum"
-           su builder -c "abuild deps"                
-      - name: Build apk
-        run: |
-           cd /home/builder/firefox
-           su builder -c "abuild"        
-           cp $(find /home/builder -name firefox*.apk) /tmp
-      - uses: actions/upload-artifact@v3
-        with:
-          name: firefox
-          path: /tmp/*.apk
+           grep pkgrel aports/community/firefox/APKBUILD
