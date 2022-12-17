@@ -32,7 +32,7 @@ jobs:
           su builder -c "abuild-keygen -a -i -n"
       - name: Move repo directory
         run: |
-           mv community/firefox /home/builder
+           mv aports/community/firefox /home/builder
            chown builder -R /home/builder
            cd /home/builder/firefox
            sed -i 's/107.0.1/108.0.1/g' APKBUILD
