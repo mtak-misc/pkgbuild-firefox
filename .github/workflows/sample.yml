@@ -35,7 +35,7 @@ jobs:
       - name: Move repo directory
         run: |
            mv community/firefox /home/builder
-           chown -R builder:builder /home/builder
+           chown builder -R /home/builder
       - name: Build apk
         run: |
            su builder -c "abuild-keygen -a -i -n"
