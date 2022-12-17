@@ -28,7 +28,6 @@ jobs:
           chgrp abuild /var/cache/distfiles
           chmod g+w /var/cache/distfiles
           su builder -c "abuild-keygen -a -i -n"
-    steps:
       - name: Check out repository
         uses: actions/checkout@v3
         with:
