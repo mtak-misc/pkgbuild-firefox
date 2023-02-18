@@ -48,7 +48,7 @@ jobs:
            su builder -c "abuild deps"
            sed -i 's/v3.17/edge/g' /etc/apk/repositories
            apk update
-           apk add rust
+           apk add rust=1.67.1-r0
            sed -i 's/edge/v3.17/g' /etc/apk/repositories
       - name: Build apk
         run: |
