@@ -1,4 +1,4 @@
-すname: build-firefox
+name: build-firefox
 
 on:
   workflow_dispatch:
