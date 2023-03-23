@@ -37,7 +37,7 @@ jobs:
            cd /home/builder/firefox
            sed -i 's/ffmpeg-libavcodec/ffmpeg-libs/g' APKBUILD
            sed -i 's/lld15/lld/g' APKBUILD
-           sed -i 's/clang15/clang-dev/g' APKBUILD
+           sed -i 's/clang15/clang-dev/' APKBUILD
            sed -i 's/"clang-15"/"clang"/g' APKBUILD
            sed -i 's/"clang++-15"/"clang++"/g' APKBUILD
 #           sed -i 's/109.0.1/110.0/g' APKBUILD
