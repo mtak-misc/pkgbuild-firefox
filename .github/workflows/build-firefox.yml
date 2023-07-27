@@ -37,6 +37,7 @@ jobs:
            cd /home/builder/firefox
            sed -i 's/115.0.2/115.0.3/g' APKBUILD
            sed -i 's/pkgrel=1/pkgrel=0/g' APKBUILD
+           sed -i 's/_releasedate=2023-07-11/_releasedate=2023-07-27/g' APKBUILD
            sed -i 's/de6ce8a2512e862c69a7d5c557d6168498d0d40e9c4b54b775f81c444e863a64c43130d57b51b360db4224c34b64a93f3ad263441caee713243b97750ec1eb4b/d42d522e4c2160824c74d94c90b9d61ff7fd0515cddc9e4d544003ddf975fe975aa517493dc28bad31c67915a22477b2fbb42266dc3bda87a2555b7f57a6f5a2/g' APKBUILD
 #           sed -i 's/ffmpeg-libavcodec/ffmpeg-libs/g' APKBUILD
 #           sed -i 's/lld15/lld/g' APKBUILD
