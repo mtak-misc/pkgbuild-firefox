@@ -61,7 +61,7 @@ jobs:
       - name: Build apk
         run: |
            cd /home/builder/firefox
-           su builder -c "MAKEFLAGS=\"-j $(nproc)\" abuild"        
+           su builder -c "abuild"        
            cp $(find /home/builder -name firefox*.apk) /tmp
       - uses: actions/upload-artifact@v3
         with:
