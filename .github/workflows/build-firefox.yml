@@ -10,6 +10,7 @@ jobs:
     steps:
       - name: Install sdk
         run: |
+        cat /etc/apk/repositories
           apk upgrade
           apk add alpine-sdk sudo  
       - name: Checkount aports repository
