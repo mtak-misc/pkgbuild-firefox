@@ -35,8 +35,8 @@ jobs:
            mv aports/community/firefox /home/builder
            chown builder -R /home/builder
            cd /home/builder/firefox
-           sed -i 's/clang17/clang16/' APKBUILD
-           sed -i 's/llvm17/llvm16/' APKBUILD
+           sed -i 's/clang17/clang16/g' APKBUILD
+           sed -i 's/llvm17/llvm16/g' APKBUILD
 #           sed -i 's/115.0.2/115.0.3/g' APKBUILD
 #           sed -i 's/pkgrel=1/pkgrel=0/g' APKBUILD
 #           sed -i 's/_releasedate=2023-07-11/_releasedate=2023-07-27/g' APKBUILD
