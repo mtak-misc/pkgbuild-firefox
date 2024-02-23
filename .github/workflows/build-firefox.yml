@@ -6,14 +6,14 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    container: alpine:3.18    
+    container: alpine:3.19
     steps:
       - name: Install sdk
         run: |
           apk upgrade
           apk add alpine-sdk sudo  
       - name: Checkount aports repository
-        uses: actions/checkout@v3  
+        uses: actions/checkout@v4 
         with:
           repository: alpinelinux/aports
 #          ref: 3.18-stable
@@ -35,8 +35,8 @@ jobs:
            mv aports/community/firefox /home/builder
            chown builder -R /home/builder
            cd /home/builder/firefox
-           sed -i 's/_llvmver=17/_llvmver=16/g' APKBUILD
-           sed -i '/icu74.patch/d' APKBUILD
+#           sed -i 's/_llvmver=17/_llvmver=16/g' APKBUILD
+#           sed -i '/icu74.patch/d' APKBUILD
 #           sed -i 's/115.0.2/115.0.3/g' APKBUILD
 #           sed -i 's/pkgrel=1/pkgrel=0/g' APKBUILD
 #           sed -i 's/_releasedate=2023-07-11/_releasedate=2023-07-27/g' APKBUILD
@@ -65,7 +65,8 @@ jobs:
            cd /home/builder/firefox
            su builder -c "abuild"        
            cp $(find /home/builder -name firefox*.apk) /tmp
-      - uses: actions/upload-artifact@v3
+      - name: Upload packages
+        uses: actions/upload-artifact@v4
         with:
           name: firefox
           path: /tmp/*.apk
