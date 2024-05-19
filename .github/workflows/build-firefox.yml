@@ -35,6 +35,7 @@ jobs:
            mv aports/community/firefox /home/builder
            chown builder -R /home/builder
            cd /home/builder/firefox
+           sed -i 's/pkgver=125.0.3/pkgver=126.0/g' APKBUILD
 #           sed -i 's/_llvmver=17/_llvmver=16/g' APKBUILD
 #           sed -i '/icu74.patch/d' APKBUILD
 #           sed -i 's/115.0.2/115.0.3/g' APKBUILD
@@ -56,10 +57,10 @@ jobs:
            cd /home/builder/firefox
            su builder -c "abuild checksum"
            su builder -c "abuild deps"
-           sed -i 's/v3.19/edge/g' /etc/apk/repositories
-           apk update
-           apk add rust=$(apk list rust | grep -v installed | awk -F"[- ]" '{print $2"-"$3}') nss=$(apk list nss | grep -v installed | awk -F"[- ]" '{print $2"-"$3}')
-           sed -i 's/edge/v3.19/g' /etc/apk/repositories
+#           sed -i 's/v3.19/edge/g' /etc/apk/repositories
+#           apk update
+#           apk add rust=$(apk list rust | grep -v installed | awk -F"[- ]" '{print $2"-"$3}') nss=$(apk list nss | grep -v installed | awk -F"[- ]" '{print $2"-"$3}')
+#           sed -i 's/edge/v3.19/g' /etc/apk/repositories
       - name: Build apk
         run: |
            cd /home/builder/firefox
