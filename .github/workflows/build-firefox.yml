@@ -6,8 +6,8 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    container: alpine:3.20
-#    container: alpine:latest
+#    container: alpine:3.20
+    container: alpine:latest
     steps:
       - name: Install sdk
         run: |
