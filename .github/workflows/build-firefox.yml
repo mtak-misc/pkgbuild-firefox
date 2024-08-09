@@ -12,7 +12,7 @@ jobs:
       - name: Install sdk
         run: |
           apk upgrade
-          apk add alpine-sdk sudo  
+          apk add alpine-sdk sudo rustfmt
       - name: Checkount aports repository
         uses: actions/checkout@v4 
         with:
