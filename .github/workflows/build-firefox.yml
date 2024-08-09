@@ -12,7 +12,6 @@ jobs:
       - name: Install sdk
         run: |
           apk upgrade
-          apk update
           apk add alpine-sdk sudo  
       - name: Checkount aports repository
         uses: actions/checkout@v4 
